@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="StockManagementSystem.Site" %>
+
+<!DOCTYPE html>
+
+    <style type="text/css">
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover {
+                    background-color: #111;
+                }
+
+        .auto-style8 {
+            width: 869px;
+            height: 123px;
+            margin-left: 295px;
+        }
+        .auto-style9 {
+            width: 100%;
+        }
+        .auto-style10 {
+            width: 665px;
+        }
+        .auto-style11 {
+            width: 410px;
+            height: 69px;
+        }
+    </style>
+
+<html>
+<head>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server" >
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1">
+        <div>
+              <div class="row" style="padding-top: 16px">
+                <div class="col-md-6">
+                    &nbsp;<table class="auto-style9">
+                        <tr>
+                            <td class="auto-style10"> <img class="auto-style11" src="http://portal.british.edu.uy/web/templates/fx2_british/images/style1/logo.png" /></td>
+                            <td class="auto-style10"> <img class="auto-style8" src="http://portal.british.edu.uy/web/templates/fx2_british/images/style1/waves.png"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+             <br />
+           <%=menu %>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
