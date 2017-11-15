@@ -53,7 +53,7 @@ namespace StockManagementSystem
                 ||cod_actor.Equals("57014") || cod_actor.Equals("57269"))
             {
                 menu += "<li><a href = 'SelecPedidos.aspx'> Entrega </a></li>";
-                menu += "<li><a href = 'Listado.aspx'> Listados </a></li>";
+                menu += "<li><a href = 'Listados.aspx'> Listados </a></li>";
             }
 
 

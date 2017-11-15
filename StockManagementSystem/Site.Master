@@ -46,6 +46,22 @@
         width: 418px;
         height: 89px;
     }
+
+    .auto-style12 {
+        margin-left: 40px;
+    }
+
+    #footer {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        height: 60px; /* Height of the footer */
+        /*background: #6cf;*/
+    }
+
+    #footer-Copy {
+        text-align: center;
+    }
 </style>
 
 <html>
@@ -76,6 +92,18 @@
                 </asp:ContentPlaceHolder>
             </div>
         </form>
+        <div>
+            <p>
+                <a href="mailto:helpdesk@british.edu.uy">Report a problem</a>
+            </p>
+        </div>
     </div>
+    <div id="footer">
+
+        <div id="footer-Copy">
+            Copyright &copy; 2017 <a href="http://portal.british.edu.uy/web">The British Schools</a>
+        </div>
+    </div>
+
 </body>
 </html>
