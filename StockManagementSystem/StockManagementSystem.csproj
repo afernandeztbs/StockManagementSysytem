@@ -81,6 +81,7 @@
     <Content Include="Boostrap\CSS\bootstrap.min.css" />
     <Content Include="Boostrap\JS\bootstrap.js" />
     <Content Include="Boostrap\JS\bootstrap.min.js" />
+    <Content Include="Listados.aspx" />
     <Content Include="PedidosUsuario.aspx" />
     <Content Include="DetallePedido.aspx" />
     <Content Include="SelecPedidos.aspx" />
@@ -117,6 +118,13 @@
     <Compile Include="Clases\LineaPedido.cs" />
     <Compile Include="Clases\Pedido.cs" />
     <Compile Include="LDAPAutenticador.cs" />
+    <Compile Include="Listados.aspx.cs">
+      <DependentUpon>Listados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Listados.aspx.designer.cs">
+      <DependentUpon>Listados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -36,7 +36,7 @@
         <div class="container">
             <div class="panel-body" __designer:mapid="0">
                 <form id="form2" runat="server" class="form-horizontal">
-
+                   
                     <br __designer:mapid="2" />
        
                     <table class="auto-style2" __designer:mapid="3">
@@ -58,8 +58,9 @@
                         </tr>
                         <tr __designer:mapid="4">
                             <td class="auto-style1" __designer:mapid="5">
-                                <asp:TextBox ID="Buscador" runat="server" class="form-control input-sm" Width="763px"></asp:TextBox>
-                            </td>
+                                <asp:TextBox ID="Buscador" runat="server" class="form-control input-sm" Width="763px"  AutoPostBack="True"  ></asp:TextBox>
+                           
+                                </td>
                             <td __designer:mapid="7" class="auto-style7">&nbsp;</td>
                             <td __designer:mapid="7">
                                 <asp:Button ID="BtnBuscar" runat="server" OnClick="BtnBuscar_Click" Text="Search" class="btn btn-primary btn-sm" Width="225px" />

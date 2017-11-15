@@ -69,7 +69,7 @@ namespace StockManagementSystem
         {
             if (!cantAEntregar.Text.Equals(""))
             {
-                if (Convert.ToInt32(cantAEntregar.Text) < 0)
+                if (Convert.ToInt32(cantAEntregar.Text) > 0)
                 {
                     if (Convert.ToInt32(cantAEntregar.Text) <= (Convert.ToInt32(cantPedido.Text) - Convert.ToInt32(cantEntregado.Text)))
                     {

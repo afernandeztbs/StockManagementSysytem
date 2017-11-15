@@ -38,6 +38,7 @@
                                 <%--  <script src="Scripts/jquery-1.10.2.min.js"></script>
         <script src="Scripts/bootstrap.min.js"></script>--%><%--  <script src="Scripts/jquery-1.10.2.min.js"></script>
         <script src="Scripts/bootstrap.min.js"></script>--%>
+                                <%=mensaje %>
                             </td>
                             <td __designer:mapid="c" class="auto-style7">&nbsp;</td>
                             <td __designer:mapid="c">

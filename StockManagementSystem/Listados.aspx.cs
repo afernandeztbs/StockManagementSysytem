@@ -124,10 +124,9 @@ namespace StockManagementSystem
 
                 DataRow fila = tabla.NewRow();
                 String Nropedido = "";
-                if (String.Format("{0}", reader.GetString(2)).Equals("Pendiente") || String.Format("{0}", reader.GetString(2)).Equals("En Proceso"))
-                {
-                    Nropedido = "EntregaPedido.aspx?" + String.Format("{0}", reader[0]);
-                }
+              
+                Nropedido = "DetallePedido.aspx?" + String.Format("{0}", reader[0]);
+          
 
 
                 fila["Nro"] = "<a href='" + Nropedido + "'>" + Convert.ToInt32(String.Format("{0}", reader[0])) + "</a>";

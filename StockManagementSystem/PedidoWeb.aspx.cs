@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -30,20 +32,26 @@ namespace StockManagementSystem
             UserInfoCookieCollection = Request.Cookies["userInfo"].Values;
             cod_actor = Server.HtmlEncode(UserInfoCookieCollection["cod_actor"]);
 
+            ViewState.Clear();
+            EnableViewState = false;
 
             if (!Page.IsPostBack)
             { //Esto ocurre solo la primera vez que se carga tu página
               //Inicializas tus variables y las almacenas en el Session
+                
                 pedido = new Pedido();
                 html = "<p></p>";
+         
                 Page.Session["pedido"] = pedido;
                 Page.Session["html"] = html;
             }
             else
             { //Si no es la primera vez que se recarga la página ( Esto puede suseder cuando el servidor responde a un click del boton por ejemplo
               //obtienes el valor de tus variables desde el Session
+                pedido = new Pedido();
                 pedido = (Pedido)Page.Session["pedido"];
-
+    
+                html = "";
                 html = aux.ConvertDataTableToHTML(pedido.tabla());
 
 
@@ -53,29 +61,42 @@ namespace StockManagementSystem
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection("Data Source= srv-sql01; Initial Catalog = MTDesa; Integrated Security = True");
+
             String str = "select " +
-                        " nom_articulo " +
-                        "from ct_articulos where nom_articulo like '%' + @search + '%'";
+                          " ltrim(rtrim(nom_articulo)) as nombre " +
+                          "from ct_articulos where nom_articulo like '%' + @search + '%'";
 
             con.Open();
             SqlCommand xp = new SqlCommand(str, con);
             xp.Parameters.Add("@search", SqlDbType.NVarChar).Value = Buscador.Text;
 
+            SqlDataReader reader = xp.ExecuteReader();
+          
+            while (reader.Read())
+            {
 
+                Articulos.Items.Add((String.Format("{0}", reader[0])));
+            }
+
+
+
+
+            
             //Cargo Lista
 
-            Articulos.DataSource = xp.ExecuteReader();
-            Articulos.DataTextField = "nom_articulo";
-            Articulos.DataBind();
-
+         //   Articulos.DataSource = xp.ExecuteReader();
+           // Articulos.DataTextField = "nombre";
+            //Articulos.DataBind();
 
             con.Close();
+            
         }
 
         protected void BtnSelect_Click(object sender, EventArgs e)
         {
             String str = "select " +
-                         " cod_articulo " +
+                         " ltrim(rtrim(cod_articulo)) " +
                          "from ct_articulos where nom_articulo like '%' + @search + '%'";
 
             con.Open();
@@ -90,9 +111,11 @@ namespace StockManagementSystem
 
             NomArticulo.Text = Articulos.SelectedItem.ToString();
 
-
-
+            Articulos = new ListBox();
+    
+            reader.Close();
             con.Close();
+            
         }
 
         protected void insert_Click(object sender, EventArgs e)
@@ -118,6 +141,7 @@ namespace StockManagementSystem
                             mensaje = "<div class='alert alert-success'>" +
                             " Se agrego satifactoriamente el articulo <strong>" + articulo.getCodArticulo() +
                             "</strong></div>";
+                           
                             LimpiarCampos();
 
                         }
@@ -254,11 +278,51 @@ namespace StockManagementSystem
                 actor.area = String.Format("{0}", reader.GetString(6));
             }
 
+            reader.Close();
             con.Close();
 
             return actor;
 
         }
+
+     
+
+        protected void Buscador_TextChanged1(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source= srv-sql01; Initial Catalog = MTDesa; Integrated Security = True");
+
+            String str = "select " +
+                          " ltrim(rtrim(nom_articulo)) as nombre " +
+                          "from ct_articulos where nom_articulo like '%' + @search + '%'";
+
+            con.Open();
+            SqlCommand xp = new SqlCommand(str, con);
+            xp.Parameters.Add("@search", SqlDbType.NVarChar).Value = Buscador.Text;
+
+            SqlDataReader reader = xp.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Articulos.Items.Add((String.Format("{0}", reader[0])));
+            }
+
+
+
+
+
+
+            //Cargo Lista
+
+            //   Articulos.DataSource = xp.ExecuteReader();
+            // Articulos.DataTextField = "nombre";
+            //Articulos.DataBind();
+
+            con.Close();
+        }
+
+
+    
 
     }
 }
