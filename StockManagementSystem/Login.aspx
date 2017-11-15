@@ -1,7 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="StockManagementSystem.Login" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <!DOCTYPE html>
 
@@ -12,10 +9,11 @@
     <meta name="viewport" content="width=device-width" />
 
     <title>Login</title>
-  
+    <link href="Boostrap/CSS/bootstrap.min.css" rel="stylesheet" />
 
+    <link href="Style/Login2.css" rel="stylesheet" />
 
-
+    <link href="Boostrap/CSS/bootstrap.min.css" rel="stylesheet" />
 
 </head>
 
@@ -140,4 +138,3 @@
 
 </body>
 </html>
-    </asp:Content>
